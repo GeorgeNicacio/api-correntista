@@ -32,14 +32,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@NamedStoredProcedureQueries(
-		{@NamedStoredProcedureQuery(name="filterMovimentacao",procedureName = "_sp_ListarMovimentacao",resultClasses = Movimentacao.class,
-		 parameters = {
-				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "dataInicio",type = Date.class),
-				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "dataFim",type = Date.class),
-				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "tipoMovimentacao",type = String.class)
-			}),
-		})
 public class Movimentacao {
 
 	@Id

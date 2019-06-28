@@ -2,9 +2,9 @@ package com.unp.challenge.resources;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,19 +22,15 @@ public class MovimentacaoResource {
 	private MovimentacaoService service;
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
-	public ResponseEntity<Page<Movimentacao>> search(
+	public ResponseEntity<List<Movimentacao>> search(
 			@RequestParam(value="dataInicio", required=false) String dataInicio,
 			@RequestParam(value="dataFim", required=false) String dataFim,
-			@RequestParam(value="tipoMovimentacao", required=false) String tipoMovimentacao,
-			@RequestParam(value="page", defaultValue="0") Integer page, 
-			@RequestParam(value="linesPerPage", defaultValue="15") Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="dataCriacao") String orderBy, 
-			@RequestParam(value="direction", defaultValue="ASC") String direction) throws ParseException {
+			@RequestParam(value="tipoMovimentacao", required=false) String tipoMovimentacao) throws ParseException {
 		
 		
-		Page<Movimentacao> list = service.search(new SimpleDateFormat("dd-MM-yyyy").parse(dataInicio), 
+		List<Movimentacao> list = service.search(new SimpleDateFormat("dd-MM-yyyy").parse(dataInicio), 
 												 new SimpleDateFormat("dd-MM-yyyy").parse(dataFim), 
-												 tipoMovimentacao, page, linesPerPage, orderBy, direction);
+												 tipoMovimentacao);
 		
 		return ResponseEntity.ok().body(list);
 	}	
