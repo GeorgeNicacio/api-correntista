@@ -12,19 +12,18 @@ public class FlywayConfig implements FlywayMigrationStrategy {
 
 	@Override
 	public void migrate(Flyway flyway) {
-		flyway.setBaselineOnMigrate(true);
-		flyway.migrate();
+		
 	} 
 	
 	@Bean
 	public boolean instantiateDatabase() throws ParseException {
 		
 		// Create the Flyway instance and point it to the database
-        Flyway flyway = Flyway.configure().dataSource("jdbc:sqlserver://localhost:49172;databaseName=master;integratedSecurity=true;", null, null).load();
+        Flyway flyway = new Flyway();
+        flyway.setDataSource("jdbc:sqlserver://localhost:49172;databaseName=master;integratedSecurity=true;", null, null, null);
+        flyway.setBaselineOnMigrate(true);
+        //flyway.migrate();
 
-        // Start the migration
-        //migrate(flyway);
-		
 		return true;
 	}
 	
