@@ -15,7 +15,7 @@ import com.unp.challenge.domain.Movimentacao;
 @Repository
 public interface MovimentacaoRepository extends JpaRepository<Movimentacao, Integer>{
 	
-	@Procedure(name = "filterMovimentacao :dataInicio, :dataFim, :tipoMovimentacao")
+	@Procedure(name = "filterMovimentacao")
 	Page<Movimentacao> search(@Param("dataInicio") Date dataInicio, @Param("dataFim") Date dataFim,
 							  @Param("tipoMovimentacao") String tipoMovimentacao,Pageable pageRequest);
 

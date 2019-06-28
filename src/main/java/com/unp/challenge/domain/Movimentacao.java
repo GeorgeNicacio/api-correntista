@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,9 +35,9 @@ import lombok.NoArgsConstructor;
 @NamedStoredProcedureQueries(
 		{@NamedStoredProcedureQuery(name="filterMovimentacao",procedureName = "_sp_ListarMovimentacao",resultClasses = Movimentacao.class,
 		 parameters = {
-				 @StoredProcedureParameter(name = "dataInicio",type = Date.class),
-				 @StoredProcedureParameter(name = "dataFim",type = Date.class),
-				 @StoredProcedureParameter(name = "tipoMovimentacao",type = String.class)
+				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "dataInicio",type = Date.class),
+				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "dataFim",type = Date.class),
+				 @StoredProcedureParameter(mode = ParameterMode.IN, name = "tipoMovimentacao",type = String.class)
 			}),
 		})
 public class Movimentacao {

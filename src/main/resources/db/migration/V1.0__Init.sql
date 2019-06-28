@@ -1,6 +1,6 @@
 -- TABLES -----------------------------
 CREATE TABLE correntista (
-    idMovimentacao integer NOT NULL IDENTITY(1, 1),
+    idCorrentista integer NOT NULL IDENTITY(1, 1),
     nome varchar(255),
     dataCriacao datetime DEFAULT GETDATE(),
     saldoFinanceiro float
@@ -66,5 +66,5 @@ BEGIN
                 UPDATE correntista SET saldoFinanceiro =(saldoFinanceiro - @valor)  
                 WHERE idCorrentista = @idCorrentista
             END
-END  
+END;  
     
